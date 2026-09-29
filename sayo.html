@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentpurchase cart</title>
+</head>
+<body>
+    <div id="cart">
+        <input type="text" id = "productname" required placeholder="product name"><br><br>
+        <input type="number" id="productprice" required placeholder="product price"><br><br>
+        <input type ="number" id="productquantity" required placeholder="product quantity"><br><br>
+        <button type="button" onclick="purchase()">purchase</button>
+    </div>
+    <div id="screen">
+
+    </div>
+    <div id="display-discount">
+
+    </div>
+<script>
+    function purchase(){
+        let productname=document.getElementById("productname").value;
+        let productprice=document.getElementById("productprice").value;
+        let productquantity=document.getElementById("productquantity").value;
+        let discount=parseFloat(productprice*0.1);
+        // console.log(discount);
+
+        if(productname=="" || productprice=="" || productquantity=="" ){
+            document.getElementById("screen").innerHTML="all field are required";
+        }
+         else if(parseFloat(productprice) < 2000.00){
+            console.log("hello active");
+            console.log(parseFloat(productprice-discount));
+            document.getElementById("display-discount").innerHTML=parseFloat(productprice-discount);
+        }
+        else if(productname!=="" && productprice!=="" && productquantity!==""){
+            document.getElementById("screen").innerHTML=`This product name is ${productname} and product price is ${productprice}`;
+        }
+        else{
+            document.getElementById("screen").innerHTML="something went wrong";
+        }
+    }
+</script>
+</body>
+</html>
